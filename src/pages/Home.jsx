@@ -4,10 +4,13 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 export const Home = () => {
 
 	const { store, dispatch } = useGlobalReducer()
+	useEfect(()=>{
+		getContacts()
+	})
 
 	return (
 		<>
-			<p>hola estas en el Home</p>
+			<h1 class="d-flex justify-content-center">Hola estas en el Home</h1>
 		</>
 	);
 }; 
