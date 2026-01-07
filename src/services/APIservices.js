@@ -5,7 +5,7 @@ export const getContacts = async() => {
     }
 }
 
-export const createAgenda() = async(contact) => {
+export const createAgenda = async(contact) => {
     const response = await fetch(`https://playground.4geeks.com/contact/agendas/AgustinGauto`, {
         method: "POST",
         body: JSON.stringify(contact),
@@ -15,5 +15,4 @@ export const createAgenda() = async(contact) => {
     })
     const data = await response.json()
     console.log(data);
-       
 }
