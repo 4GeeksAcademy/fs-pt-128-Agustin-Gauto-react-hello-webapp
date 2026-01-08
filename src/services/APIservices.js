@@ -13,4 +13,14 @@ export const createAgenda = async () => {
         method: "POST",
     })
 }
-                                                
+
+export const deleteContact = async (id) => {
+    const response = await fetch(`https://playground.4geeks.com/contact/agendas/AgustinGauto/contacts/${id}`,{
+        method: "DELETE",
+    })
+    if(response.ok)getContacts()
+}
+                                       
+// export const editContact = async (id) => {
+//     const response = await fetch(``)
+// }
