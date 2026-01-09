@@ -1,3 +1,5 @@
+
+
 export const getContacts = async (dispatch) => {
     const response = await fetch(`https://playground.4geeks.com/contact/agendas/AgustinGauto/contacts`)
     if (!response.ok) {
@@ -14,11 +16,11 @@ export const createAgenda = async () => {
     })
 }
 
-export const deleteContact = async (id) => {
+export const deleteContact = async (id, dispatch) => {
     const response = await fetch(`https://playground.4geeks.com/contact/agendas/AgustinGauto/contacts/${id}`,{
         method: "DELETE",
     })
-    if(response.ok)getContacts()
+    if(response.ok)getContacts(dispatch)
 }
                                        
 // export const editContact = async (id) => {

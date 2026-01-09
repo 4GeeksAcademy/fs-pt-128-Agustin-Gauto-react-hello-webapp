@@ -31,7 +31,7 @@ export const Home = () => {
 								</div>
 								<div>
 									<button className="btn m-0" type="button"> <i className="fa-solid fa-pencil"></i> </button>
-									<button className="btn m-0" type="button" onClick={()=>deleteContact(contact.id)}> <i className="fa-regular fa-trash-can"></i> </button>
+									<button className="btn m-0" type="button" onClick={()=>deleteContact(contact.id, dispatch)}> <i className="fa-regular fa-trash-can"></i> </button>
 								</div>
 							</div>
 						</div>
