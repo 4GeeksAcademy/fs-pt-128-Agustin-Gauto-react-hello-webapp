@@ -63,19 +63,19 @@ useEffect(()=>{
 				<div className="card-body m-auto " style={{width: "1000px",}}>
 					<div className="input-group input-group-sm mb-3 row">
 						<span className="input-group-text col-2" id="inputName">Name</span>
-						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputName" value={contact.name} onChange={handleInputChange}/>						
+						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputName" name="name" value={contact.name} onChange={handleInputChange}/>						
 					</div>
 					<div className="input-group input-group-sm mb-3 row">
 						<span className="input-group-text col-2" id="inputEmail">Email</span>
-						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputEmail" value={contact.email} onChange={handleInputChange}/>						
+						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputEmail" name="email" value={contact.email} onChange={handleInputChange}/>						
 					</div>
 					<div className="input-group input-group-sm mb-3 row">
 						<span className="input-group-text col-2" id="inputPhone">Phone</span>
-						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputPhone" value={contact.phone} onChange={handleInputChange}/>						
+						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputPhone" name="phone" value={contact.phone} onChange={handleInputChange}/>						
 					</div>
 					<div className="input-group input-group-sm mb-3 row">
 						<span className="input-group-text col-2" id="inputAddress">Address</span>
-						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputAddress" value={contact.address} onChange={handleInputChange}/>						
+						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputAddress" name="address" value={contact.address} onChange={handleInputChange}/>						
 					</div>
 				</div>
 				<div className="d-flex justify-content-center mb-3">
