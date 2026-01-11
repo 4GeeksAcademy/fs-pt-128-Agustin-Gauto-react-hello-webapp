@@ -1,28 +1,85 @@
-export const Form = () => {
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
+import useGlobalReducer from "../hooks/useGlobalReducer";
+
+export const Form = ({titulo, button}) => {
+
+	const {store, dispatch} = useGlobalReducer()
+
+	const {id} = useParams()
+
+	const [contact, setContact] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		address: "",
+	})
+
+	const handleInputChange = (e) => {
+        setContact({
+            ...contact,
+            [e.target.name]: e.target.value
+
+        })
+	}
+
+	const [isEditing, SetIsEditing] = useState(false)
+
+	const [showAlert, setShowAlert ] = useState(false)
+
+	const handleSumbit = (e) => {
+		e.preventDefault();
+		if(!contact.name || !contact.email || !contact.phone || !contact.address ) {
+			setShowAlert(true);
+			setTimeout(()=>setShowAlert(false), 2000);
+			return;
+		}
+	}
+
+	const contactToEdit = () => {
+		const contactFind = store.contacts.find(contact => { return contact.id === Number(id)}) 
+		console.log(contactFind);
+		setContact(contactFind)
+	}
+
+useEffect(()=>{
+	if(id){
+		SetIsEditing(true)
+		contactToEdit()
+	}else{
+		SetIsEditing(false)
+	}
+},[])
+	
     return(
 
-    <div className="card align-self-center m-auto" style={{width: "1100px",}}>
-				<h3 className="d-flex justify-content-center mt-3">Add new contact</h3>
+    <div className="card align-self-center m-auto" style={{width: "1100px",}} onSubmit={handleSumbit}>
+		{showAlert && ( 
+			<div className="alert alert-warning" role="alert">
+				debes completar todos los campos
+			</div>
+		)}
+				<h3 className="d-flex justify-content-center mt-3">{titulo}</h3>
 				<div className="card-body m-auto " style={{width: "1000px",}}>
 					<div className="input-group input-group-sm mb-3 row">
 						<span className="input-group-text col-2" id="inputName">Name</span>
-						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputName" />						
+						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputName" value={contact.name} onChange={handleInputChange}/>						
 					</div>
 					<div className="input-group input-group-sm mb-3 row">
 						<span className="input-group-text col-2" id="inputEmail">Email</span>
-						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputEmail" />						
+						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputEmail" value={contact.email} onChange={handleInputChange}/>						
 					</div>
 					<div className="input-group input-group-sm mb-3 row">
 						<span className="input-group-text col-2" id="inputPhone">Phone</span>
-						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputPhone" />						
+						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputPhone" value={contact.phone} onChange={handleInputChange}/>						
 					</div>
 					<div className="input-group input-group-sm mb-3 row">
-						<span className="input-group-text col-2" id="inputAdress">Adress</span>
-						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputAdress" />						
+						<span className="input-group-text col-2" id="inputAddress">Address</span>
+						<input type="text" className="form-control col-8" aria-label="Sizing example input" aria-describedby="inputAddress" value={contact.address} onChange={handleInputChange}/>						
 					</div>
 				</div>
 				<div className="d-flex justify-content-center mb-3">
-					<button type="button" className="btn btn-outline-primary col-2">Add Contact</button>
+					<button type="button" className="btn btn-outline-primary col-2">{button}</button>
 				</div>
 			</div>
     )

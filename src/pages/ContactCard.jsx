@@ -19,7 +19,7 @@ export const ContactCard = ({ contact }) => {
 					</div>
 				</div>
 				<div>
-					<Link to="/add">
+					<Link to={`/edit/${contact.id}`}>
 					<button className="btn m-0" type="button"> <i className="fa-solid fa-pencil"></i> </button>
 						  </Link>
 					<button className="btn m-0" type="button" onClick={() => deleteContact(contact.id, dispatch)}> <i className="fa-regular fa-trash-can"></i> </button>
