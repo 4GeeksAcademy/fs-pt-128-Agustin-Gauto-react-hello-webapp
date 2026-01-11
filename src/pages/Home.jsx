@@ -3,6 +3,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { deleteContact, getContacts } from "../services/APIservices.js";
 import { Form } from "./Form.jsx"
 import { ContactCard } from "./ContactCard.jsx"
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 
@@ -15,15 +16,19 @@ export const Home = () => {
 
 	return (
 		<>
-			<h1 className="d-flex justify-content-center">Hola estas en el Home</h1>
+			<h1 className="d-flex justify-content-center">Mis contactos <i className="fa-solid fa-address-book fs-2 agenda"></i></h1>
 			<div className="container">
 				{
 					store.contacts.map(contact => (
-						<ContactCard contact={contact} key={contact.id}/>
+						<ContactCard contact={contact} key={contact.id} />
 					))
 				}
 			</div>
-			<Form />
+				<Link to="Add">
+			<div className="d-flex justify-content-center mb-3">
+					<button type="button" className="btn btn-outline-primary col-2">Add Contact</button>
+			</div>
+					</Link>
 		</>
 	);
 }; 
