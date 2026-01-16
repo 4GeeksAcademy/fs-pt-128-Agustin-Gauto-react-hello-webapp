@@ -16,7 +16,7 @@ export const Home = () => {
 
 	return (
 		<>
-			<h1 className="d-flex justify-content-center">Mis contactos <i className="fa-solid fa-address-book fs-2 agenda"></i></h1>
+			<h1 className="d-flex justify-content-center">My contacts 📖 </h1>
 			<div className="container">
 				{
 					store.contacts.map(contact => (

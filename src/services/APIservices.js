@@ -24,15 +24,34 @@ export const deleteContact = async (id, dispatch) => {
 }
 
                                       
-export const editContacts = async (contact) => {
+export const editContacts = async (contact, dispatch, navigate) => {
     const response = await fetch(`https://playground.4geeks.com/contact/agendas/AgustinGauto/contacts/${contact.id}`, {
 
         method: "PUT",
         body: JSON.stringify(contact),
         headers: {
-            "Content-Typer": "application/json"
+            "Content-Type": "application/json"
         }
     })
+    if(response.ok){
+        await getContacts(dispatch);
+        navigate("/")
+    }
+}
+
+export const addContact = async (contact, dispatch, navigate) => {
+    const response = await fetch(`https://playground.4geeks.com/contact/agendas/AgustinGauto/contacts`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(contact)
+    });
+    if (!response.ok) {
+        alert("ERROR AL CREAR CONTACTO")
+        return
+    }
     const data = await response.json()
-    console.log(data);
+    dispatch({ type: "add_contact", payload: data });
+    navigate("/");
 }
